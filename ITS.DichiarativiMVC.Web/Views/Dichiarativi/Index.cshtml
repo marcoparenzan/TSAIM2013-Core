@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ITS.DichiarativiMVC.Web.Models.DichiarativoIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodiceFiscale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RNTotale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RSTotale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totale)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodiceFiscale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RNTotale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RSTotale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Totale)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DichiarativoId }) |
+            @Html.ActionLink("RN", "RN", new { id = item.DichiarativoId }) |
+            @Html.ActionLink("Addizionale RN", "AddizionaleRN", new { id = item.DichiarativoId }) |
+          @Html.ActionLink("Delete", "Delete", new { id=item.DichiarativoId })
+        </td>
+    </tr>
+}
+
+</table>
