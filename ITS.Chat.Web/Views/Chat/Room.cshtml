@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Room";
+}
+<h2>Room</h2>
+<table class="table table-striped" id="conversation">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Timestamp</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<label for="talk-message">Message</label>
+<input type="text" id="talk-message" />
+<a href="#" id="talk">Talk</a>
+@section scripts {
+
+    <script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+
+        var chatHubProxy = $.connection.chatHub;
+        chatHubProxy.client.talk = function (sender, timestamp, talkid) {
+            $("#conversation tbody").append("<tr><td>" + sender + "</td><td>" + timestamp + "</td><td>" + talkid + "</td></tr>");
+        };
+        $.connection.hub.start().done(function () {
+
+        });
+
+        $(function () {
+            $("#talk").click(function () {
+                $.post("@Url.Action("Talk")", {
+                    "message": $("#talk-message").val()
+                }, function () {
+                    alert("Talk done");
+                });
+            });
+        });
+
+    </script>
+}

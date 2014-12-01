@@ -21,7 +21,7 @@ namespace ToDoList.Web.Controllers
 
         [HttpPost]
         [ActionName("NuovaCosaDaFareOggi")]
-        public ActionResult Handle(NuovaCosaDaFareOggiCommand command)
+        public ActionResult Handle(string cosa, NuovaCosaDaFareOggiCommand command)
         {
             return RedirectToAction("Index");
         }
