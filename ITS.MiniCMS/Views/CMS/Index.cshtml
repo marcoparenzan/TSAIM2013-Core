@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ITS.MiniCMS.Models.ImageTableEntity>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<a href="@Url.Action("UploadImage")">Upload Image</a>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Name</th><th>Description</th><th>Size</th><th>Date</th><th>Thumbnail</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Size</td>
+                <td>@item.Created.ToShortDateString()</td>
+                <td><img src="https://tsaim13.blob.core.windows.net/marcoparenzanthumbnails/@item.RowKey" alt="@item.Name" /></td>
+            </tr>
+        }
+    </tbody>
+
+</table>

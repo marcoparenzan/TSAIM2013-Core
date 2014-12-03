@@ -1,0 +1,12 @@
+﻿@if (@ViewBag.is_authenticated)
+{
+    <text>
+    Ciao, @ViewBag.social_state.Me.name . Adesso sei autenticato. Se vuoi disconnetterti, premi <a href="@Url.Action("Logoff")" class="btn btn-danger">qui</a>
+    </text>
+}
+else
+{
+    <text>
+    Non sei ancora autenticato. Per farlo, premi <a href="@Url.Action("Logon")" class="btn btn-primary">qui</a>
+    </text>
+}

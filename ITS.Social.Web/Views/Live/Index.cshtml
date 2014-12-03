@@ -1,0 +1,26 @@
+﻿@{
+}
+@section styles {
+}
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+    <h1>SaaS Live</h1>
+    <p>
+        @Html.Partial("_StatePartial")
+    </p>
+</div>
+@if (@ViewBag.is_authenticated)
+{
+    <div class="hero-unit">
+        <h1>Skydrive</h1>
+        <p>
+        </p>
+    </div>
+    <div class="hero-unit">
+        <h1>Calendar</h1>
+        <p>
+        </p>
+    </div>
+}
+@section scripts {
+}

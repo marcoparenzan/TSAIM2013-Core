@@ -1,0 +1,10 @@
+﻿@if (@ViewBag.is_authenticated)
+{
+    <text>
+        Hello, @ViewBag.social_state.Me.name 
+        &nbsp;
+        <a href="@Url.Action("Logoff")" class="btn btn-danger">Log off</a>
+    </text>
+} else {
+        <a href="@Url.Action("Logon")" class="btn btn-primary">Log On</a>
+}
