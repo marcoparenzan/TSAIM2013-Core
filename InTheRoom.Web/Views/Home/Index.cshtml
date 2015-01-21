@@ -3,6 +3,17 @@
 }
 <div class="row">
     <h1>You are in the <span id="room_name"></span>.</h1>
+    <div>
+        <a href="#" id="look" class="btn btn-default">Look</a>
+    </div>
+    <div>
+        <input type="text" id="thingName" />
+        <a href="#" id="take" class="btn btn-default">Take</a>
+    </div>
+    <div>
+        <input type="text" id="useName" />
+        <a href="#" id="use" class="btn btn-default">Use</a>
+    </div>
 </div>
 @section scripts{
     
@@ -10,11 +21,53 @@
 
         $(function () {
             
+
             $.get('@Url.Action("Info", "Room")'
             , function (result) {
                 $("#room_name").html(result.Name);
             });
 
+            $("#look").click(function () {
+
+                $.post('@Url.Action("Look", "Room")'
+                    , JSON.stringify({
+                    }),
+                    function (response) {
+
+                        $(response).each(function (i, item) {
+
+                            alert(item.Name);
+
+                        });
+
+                });
+
+            });
+
+            $("#take").click(function () {
+
+                $.post('@Url.Action("Take", "Room")'
+                    , {
+                        "thingName": $("#thingName").val()
+                    },
+                    function (response) {
+
+                    });
+
+            });
+
+
+            $("#use").click(function () {
+
+                $.post('@Url.Action("Use", "Room")'
+                    , {
+                        "thingName": $("#useName").val()
+                    },
+                    function (response) {
+
+                    });
+
+            });
         });
 
     </script>

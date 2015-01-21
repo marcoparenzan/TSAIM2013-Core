@@ -45,7 +45,11 @@ namespace InTheRoom.FileSystem
                 switch (player.CurrentRoom)
                 {
                     case "LivingRoom":
-                        return new LivingRoom { 
+                        return new LivingRoom(true) { 
+                        };
+                    case "BedRoom":
+                        return new BedRoom(true)
+                        {
                         };
                     default:
                         throw new NotImplementedException("Room not implemented");

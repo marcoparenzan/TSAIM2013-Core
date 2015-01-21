@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace InTheRoom.Model.Rooms
 {
-    public class LivingRoom: IRoom
+    public class BedRoom: IRoom
     {
-        public LivingRoom(bool fill = false) {
+        public BedRoom(bool fill = false)
+        {
 
             Things = new List<Thing>();
             if (fill)
@@ -17,7 +18,10 @@ namespace InTheRoom.Model.Rooms
                 Things.Add(new Thing { Name = "Coin1", Type = ThingType.Coin });
                 Things.Add(new Thing { Name = "Coin2", Type = ThingType.Coin });
                 Things.Add(new Thing { Name = "Coin3", Type = ThingType.Coin });
-                Things.Add(new Thing { Name = "Box", Type = ThingType.Box });
+                Things.Add(new Thing { Name = "Coin4", Type = ThingType.Coin });
+                Things.Add(new Thing { Name = "Coin5", Type = ThingType.Coin });
+                Things.Add(new Thing { Name = "Coin5", Type = ThingType.Coin });
+                Things.Add(new Thing { Name = "Harry Potter", Type = ThingType.Person });
             }
         }
 
@@ -56,7 +60,7 @@ namespace InTheRoom.Model.Rooms
 
         string IRoom.Name
         {
-            get { return "Living Rooom"; }
+            get { return "Bed Rooom"; }
         }
     }
 }

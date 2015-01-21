@@ -69,5 +69,37 @@ namespace InTheRoom.Web.Controllers
                 Name = CurrentRoom.Name
             }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult Look()
+        {
+            return Json(CurrentRoom.Look());
+        }
+
+
+        [HttpPost]
+        public JsonResult Take(string thingName)
+        {
+            Player.Things.Add(CurrentRoom.Take(thingName));
+            return Json(new { 
+                result = "ok"
+            });
+        }
+
+        [HttpPost]
+        public JsonResult Use(string thingName)
+        {
+            var thingToUse = Player.Things.Single(xx => xx.Name == thingName);
+            CurrentRoom.Use(thingToUse);
+            Player.Things.Remove(thingToUse);
+            if (thingToUse.Type == ThingType.Key)
+            {
+                Player.CurrentRoom = "BedRoom";
+            }
+            return Json(new
+            {
+                result = "ok"
+            });
+        }
     }
 }

@@ -10,5 +10,11 @@ namespace InTheRoom.Model
     {
         public string Name { get; set; }
         public string CurrentRoom { get; set; }
+        public List<Thing> Things { get; set; }
+
+        public Player()
+        {
+            Things = new List<Thing>();
+        }
     }
 }
