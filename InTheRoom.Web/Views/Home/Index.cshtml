@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <h1>You are in the <span id="room_name"></span>.</h1>
+</div>
+@section scripts{
+    
+    <script type="text/javascript">
+
+        $(function () {
+            
+            $.get('@Url.Action("Info", "Room")'
+            , function (result) {
+                $("#room_name").html(result.Name);
+            });
+
+        });
+
+    </script>
+    
+}
